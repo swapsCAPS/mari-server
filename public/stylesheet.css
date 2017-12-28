@@ -34,3 +34,23 @@ body {
   animation-timing-function: ease-in;
   animation-duration: 3s;
 }
+
+@keyframes party {
+  0%   {background-color: red;}
+  50%  {background-color: yellow;}
+  75%  {background-color: lightblue;}
+  100%  {background-color: green;}
+}
+
+.fissa {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation-name: party;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  /* animation-direction: alternate; */
+  animation-timing-function: linear;
+}
