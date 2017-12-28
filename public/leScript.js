@@ -4,7 +4,8 @@ var sentences = [
   "en Drie"
 ]
 
-var index = 0
+var index   = 0
+var sending = false
 
 function prev() {
   console.log("prev")
@@ -23,11 +24,33 @@ function setHtml() {
   if (!sentence) {
     sentence = "Klaar met dit gezeik wil je je cadeautje?"
   }
+  if (index >= sentences.length) {
+    activate()
+  }
   var newText = $("<p>", { class: "le-text text-center" }).attr("id", "text").html(sentence)
   $("#text").remove()
   // setTimeout(function() {
     $("#text-wrapper").append(newText)
   // }, 100)
+}
+
+function activate() {
+  if (sending) return
+  $.ajax(
+    {
+      url:         "/w00000t/on",
+      type:        "POST",
+      contentType: "application/json",
+      data:        JSON.stringify({message: "yay"}),
+      error:       function(error) {
+        sending = false
+        console.error(error)
+      },
+      success:     function() {
+        sending = false
+      }
+    }
+  )
 }
 
 $(document).ready(function() {

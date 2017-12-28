@@ -1,5 +1,6 @@
 express = require "express"
 path    = require "path"
+moment = require "moment"
 app     = express()
 
 goOn = false
@@ -14,7 +15,7 @@ app
 	.get "/mariStatus/:param1/:paramDeux", (req, res) ->
 		{ param1, paramDeux } = req.params
 		return res.sendStatus 403 unless param1 is secret.one and paramDeux is secret.two
-		console.log "w00t"
+		log "status"
 		res.json status: goOn
 
 	.get "/gedicht/:param1/:paramDeux", (req, res) ->
@@ -24,14 +25,16 @@ app
 
 	.post "/w00000t/on", (req, res) ->
 		goOn = true
-		console.log "w00t"
+		log "on"
 		res.sendStatus 200
 
 	.post "/w00000t/off", (req, res) ->
 		goOn = false
-		console.log "w00t"
+		log "off"
 		res.sendStatus 200
 
 	.listen 3000, ->
 		console.log "listening"
 
+log = (data) ->
+	console.log moment().format("MM-DD HH:mm:ss"), data
