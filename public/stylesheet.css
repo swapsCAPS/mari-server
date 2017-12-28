@@ -1,5 +1,12 @@
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .btn {
@@ -11,8 +18,19 @@ body {
     100% {opacity: 1.0;}
 }
 
-.le-text {
+#text {
   animation-name: fadein;
   animation-timing-function: ease-in;
   animation-duration: 1s;
+}
+
+.teh-row {
+  height: 150px;
+  width: 100%;
+}
+
+.container {
+  animation-name: fadein;
+  animation-timing-function: ease-in;
+  animation-duration: 3s;
 }
